@@ -11,6 +11,7 @@ import java.util.Optional;
 @Service
 public class PrestamoService {
 
+    //Objeto para acceder a la BD.
     private final PrestamoRepository prestamoRepository;
 
     public PrestamoService(PrestamoRepository prestamoRepository) {
@@ -54,5 +55,10 @@ public class PrestamoService {
             }
         }
         return fecha;
+    }
+
+    // método para buscar por ID
+    public Prestamo getPrestamoById(Long id) {
+        return prestamoRepository.findById(id).orElse(null);
     }
 }

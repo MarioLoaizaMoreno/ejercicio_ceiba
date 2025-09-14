@@ -24,4 +24,15 @@ public class PrestamoController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    //endpoint GET
+    @GetMapping("/{id}")
+    public ResponseEntity<Prestamo> getPrestamoById(@PathVariable Long id) {
+        Prestamo prestamo = prestamoService.getPrestamoById(id);
+        if (prestamo != null) {
+            return ResponseEntity.ok(prestamo);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
